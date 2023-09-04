@@ -1,0 +1,251 @@
+/*------------------------------------------------------------------
+
+    [Table of contents]
+
+	1. VARIABLES
+	2. GLOBAL STYLES
+	3. APP STYLES
+  4. HEADER
+  5. TEXT PANELS
+  6. FOOTER
+
+-------------------------------------------------------------------*/
+
+/* -------------------------
+        1. VARIABLES
+------------------------- */
+
+/* 1.1 Color variables */
+$bg-color:    #333;
+$panel-color: #FFDD67;
+$text-color:  #4A4A4A;
+
+/* 1.2 Font variables */
+$main-font: 'Space Mono', monospace;
+
+/* 1.3 Visuals variables */
+$shadow: 10px 10px lighten($text-color, 10%);
+$shadow-active: 7px 7px lighten($text-color, 10%);
+
+/* 1.4 Responsive variables */
+$breakpoint-mobile: 768px;
+$breakpoint-middle: 1024px;
+
+/* -------------------------
+        2. GLOBAL STYLES
+------------------------- */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  overflow: hidden;
+  font-family: $main-font;
+  color: $text-color;
+  background-color: $bg-color;
+}
+
+/* -------------------------
+        3. APP STYLES
+------------------------- */
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+/* -------------------------
+        4. HEADER
+------------------------- */
+
+header {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: $breakpoint-mobile) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.app-title {
+  order: 2;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .app-title {
+    order: 0;
+    padding-left: 10px;
+    margin-top: 0;
+    font-size: 1.2em;
+    text-align: left;
+  }
+}
+
+.help-button {
+  align-self: flex-end;
+  width: 40px;
+  height: 40px;
+  margin: 20px;
+  text-align: center;
+  box-shadow: $shadow;
+  background-color: lighten($panel-color, 15%);
+  cursor: pointer;
+  transition: box-shadow .2s ease-out;
+  i {
+    font-size: 2.5em;
+  }
+  &:hover {
+    box-shadow: $shadow-active;
+  }
+  &.active {
+    box-shadow: none;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .help-button {
+    align-self: center;
+    margin: 0;
+    height: inherit;
+    box-shadow: none;
+    transition: background-color .2s ease-out;
+    i {
+      font-size: 2.5em;
+    }
+    &:hover {
+      background-color: darken($panel-color, 25%);
+    }
+    &.active {
+      background-color: lighten($panel-color, 35%);
+    }
+  }
+}
+
+/* -------------------------
+        6. TEXT PANELS
+------------------------- */
+
+.text-panels {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  margin: 0 10%;
+  height: 600px;
+}
+
+@media (max-width: $breakpoint-middle) {
+  .text-panels {
+    width: 90%;
+    margin: 0 5%;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .text-panels {
+    flex-grow: 2;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.text-panel-left,
+.text-panel-right {
+  width: 45%;
+  height: 100%;
+  padding: 10px;
+  box-shadow: $shadow;
+  background-color: $panel-color;
+}
+
+.text-panel-left {
+  resize: none;
+  outline: none;
+  overflow-x: hidden;
+  font-family: $main-font;
+  font-size: .95em;
+  color: $text-color;
+  border: 0;
+  .non-editable {
+    pointer-events: none;
+  }
+}
+
+.text-panel-right {
+  font-size: .95em;
+  overflow: auto;
+}
+
+@media (max-width: $breakpoint-middle) {
+  .text-panel-left,
+  .text-panel-right {
+    font-size: .8em;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .text-panel-left,
+  .text-panel-right {
+    font-size: .65em;
+  }
+}
+
+.text-panel-left::-webkit-scrollbar,
+.text-panel-right::-webkit-scrollbar {
+  width: 10px;
+}
+
+.text-panel-left::-webkit-scrollbar-track,
+.text-panel-right::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
+
+.text-panel-left::-webkit-scrollbar-thumb,
+.text-panel-right::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .text-panel-left,
+  .text-panel-right {
+    width: 50%;
+    box-shadow: none;
+  }
+  .text-panel-left {
+    border-right: 3px solid $bg-color;
+  }
+}
+
+/* -------------------------
+        5. FOOTER
+------------------------- */
+
+footer {
+  text-align: center;
+  font-size: .8em;
+  line-height: 30px;
+  margin-top: 20px;
+  a {
+    text-decoration: none;
+    color: $text-color;
+  }
+}
+.footer {
+    text-align: center;
+    padding: 1px;
+    background-color: #f2f2f2;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
